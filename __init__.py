@@ -1,7 +1,21 @@
 from .gemini_prompt_builder_text import (
     ComfyUIGeminiPromptBuilderText,
-    NODE_CLASS_MAPPINGS,
-    NODE_DISPLAY_NAME_MAPPINGS,
+    NODE_CLASS_MAPPINGS as _GEMINI_CLASS_MAPPINGS,
+    NODE_DISPLAY_NAME_MAPPINGS as _GEMINI_DISPLAY_MAPPINGS,
 )
 
-__all__ = ["ComfyUIGeminiPromptBuilderText", "NODE_CLASS_MAPPINGS", "NODE_DISPLAY_NAME_MAPPINGS"]
+from .openai_prompt_builder_text import (
+    ComfyUIOpenAIPromptBuilderText,
+    NODE_CLASS_MAPPINGS as _OPENAI_CLASS_MAPPINGS,
+    NODE_DISPLAY_NAME_MAPPINGS as _OPENAI_DISPLAY_MAPPINGS,
+)
+
+NODE_CLASS_MAPPINGS = {**_GEMINI_CLASS_MAPPINGS, **_OPENAI_CLASS_MAPPINGS}
+NODE_DISPLAY_NAME_MAPPINGS = {**_GEMINI_DISPLAY_MAPPINGS, **_OPENAI_DISPLAY_MAPPINGS}
+
+__all__ = [
+    "ComfyUIGeminiPromptBuilderText",
+    "ComfyUIOpenAIPromptBuilderText",
+    "NODE_CLASS_MAPPINGS",
+    "NODE_DISPLAY_NAME_MAPPINGS",
+]
